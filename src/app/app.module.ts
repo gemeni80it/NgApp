@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';               // routing
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';                    // Library for charts components
 
 /** Components */
@@ -17,6 +18,10 @@ import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 /** Routing routes */
 import { appRoutes } from 'src/routes';
 import { ServerComponent } from './server/server.component';
+import { PaginationComponent } from './pagination/pagination.component';
+
+/** Providers Services */
+import { SalesDataService } from './services/SalesData.service';
 
 @NgModule({
   declarations: [
@@ -29,14 +34,18 @@ import { ServerComponent } from './server/server.component';
     BarChartComponent,
     LineChartComponent,
     PieChartComponent,
-    ServerComponent
+    ServerComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
+    HttpModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [
+    SalesDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
